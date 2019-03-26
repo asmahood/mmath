@@ -33,6 +33,13 @@ When adding items to this list, please use the follwing format:
 **Date Started:** Not Started
 **Date Finished:** Not Finished
 
+#### Vector Equality
+**Description:** determines if to vectors are equal
+**Priorty:** 1
+**Issue Number:** N/A
+**Date Started:** Not Started
+**Date Finished:** Not Finished 
+
 #### Dot Product
 **Description:** implement the dot product of vectors in Rn
 **Priority:** 1
@@ -46,6 +53,20 @@ When adding items to this list, please use the follwing format:
 **Issue Number:** N/A
 **Date Started:** Not Started
 **Date Finished:** Not Finished
+
+#### Normal Vector
+**Description:** calculates the normal vector of 2 vectors in Rn
+**Priorty:** 1
+**Issue Number:** N/A
+**Date Started:** Not Started
+**Date Finished:** Not Finished 
+
+#### Projection
+**Description:** calculates the projection of vector v on to vector u
+**Priorty:** 1
+**Issue Number:** N/A
+**Date Started:** Not Started
+**Date Finished:** Not Finished 
 
 
 ## In Progress
