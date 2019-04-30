@@ -2,12 +2,27 @@
 
 #include <iostream>
 
+#include "util.hpp"
+
 void Rational::print() {
   std::cout << numer << "/" << denom << '\n';
 }
 
 Rational& Rational::reduce() {
+  if (numer == denom) {
+    numer = 1; denom = 1;
     return *this;
+  }
+
+  if (denom < 3) return *this;
+
+  // find gcd of numerator and denominator and divide
+  int div = gcd(numer, denom);
+
+  numer /= div;
+  denom /= div;
+
+  return *this;
 }
 
 Rational operator+(const Rational &lhs, const Rational &rhs) {
