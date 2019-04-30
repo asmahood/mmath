@@ -11,9 +11,9 @@ class Rational {
     Rational() = default;
     Rational(const int &x) : numer(x), denom(1) { }
     Rational(const int &x, const int &y) : numer(x), denom(y) { }
-    
+
     // Destructors
-    virtural ~Rational() = default;
+    ~Rational() = default;
 
     // Getters
     int get_numer() const { return numer; }
