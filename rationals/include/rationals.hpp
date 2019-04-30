@@ -24,6 +24,7 @@ class Rational {
     void set_denom(const int &x) { denom = x; }
 
     // Methods
+    void print();
     Rational& reduce();
 };
 

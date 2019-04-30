@@ -1,5 +1,11 @@
 #include "rationals.hpp"
 
+#include <iostream>
+
+void Rational::print() {
+  std::cout << numer << "/" << denom << '\n';
+}
+
 Rational& Rational::reduce() {
     return *this; 
 }
