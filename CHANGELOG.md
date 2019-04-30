@@ -14,7 +14,14 @@ When making additions to this file, please use the following format
 ## [Unreleased]
 
 ### Added
+- [#04c80fc](https://github.com/asmahood/mmath/commit/04c80fc) Added CMake build support. [@asmahood](https://github.com/asmahood)
+- [#e8e6a9f](https://github.com/asmahood/mmath/commit/e8e6a9f) Implemented Rational operators. [@asmahood](https://github.com/asmahood)
+- [#e8e6a9f](https://github.com/asmahood/mmath/commit/e8e6a9f) Added base Rational class. [@asmahood](https://github.com/asmahood)
+
 ### Changed
+- [#2947e7a](https://github.com/asmahood/mmath/commit/2947e7a) Finished top-level CMakeLists file for building. [@asmahood](https://github.com/asmahood)
+- [#7903bbd](https://github.com/asmahood/mmath/commit/7903bbd) Changed project structure so rationals and matrix portions are subprojects [@asmahood](https://github.com/asmahood)
+
 ### Deprecated
 ### Removed
 ### Fixed
