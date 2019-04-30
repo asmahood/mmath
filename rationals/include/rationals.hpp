@@ -8,12 +8,9 @@ class Rational {
 
   public:
     // Constructors
-    Rational() = default;
-    Rational(const int &x) : numer(x), denom(1) { }
     Rational(const int &x, const int &y) : numer(x), denom(y) { }
-
-    // Destructors
-    ~Rational() = default;
+    Rational() : Rational(0, 1) { }
+    Rational(const int &x) : Rational(x, 1) { }
 
     // Getters
     int get_numer() const { return numer; }
