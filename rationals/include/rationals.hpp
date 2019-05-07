@@ -1,6 +1,8 @@
 #ifndef GUARD_RATIONALS_H
 #define GUARD_RATIONALS_H
 
+namespace mmath {
+
 class Rational {
   private:
     int numer;
@@ -23,13 +25,18 @@ class Rational {
     // Methods
     void print();
     Rational& reduce();
+    Rational& scale(const int &c);
+    Rational& power(const int &n);
+    Rational& scalar(const int &c);
 };
 
-Rational operator+(const Rational &lhs, const Rational &rhs);
-Rational operator-(const Rational &lhs, const Rational &rhs);
-Rational operator*(const Rational &lhs, const Rational &rhs);
-Rational operator/(const Rational &lhs, const Rational &rhs);
-bool operator==(const Rational &lhs, const Rational &rhs);
-bool operator!=(const Rational &lhs, const Rational &rhs);
+} // namespace mmath
+
+mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs);
+mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs);
+mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs);
+mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs);
+bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs);
+bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs);
 
 #endif
