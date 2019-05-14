@@ -28,6 +28,10 @@ mmath::Rational& mmath::Rational::reduce() {
   return *this;
 }
 
+mmath::Rational mmath::Rational::reciprocal() {
+  return mmath::Rational(denom, numer);
+}
+
 mmath::Rational& mmath::Rational::scale(const unsigned int &c) {
   if (c == 0) return *this;
 

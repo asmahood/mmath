@@ -25,7 +25,9 @@ class Rational {
     // Methods
     void print();
     Rational& reduce();
-    Rational& scale(const int &c);
+    Rational reciprocal();
+
+    Rational& scale(const unsigned int &c);
     Rational& power(const int &n);
 
     Rational& add(const int &a);
