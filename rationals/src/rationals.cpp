@@ -41,10 +41,12 @@ mmath::Rational& mmath::Rational::scale(const unsigned int &c) {
   return *this;
 }
 
-mmath::Rational& mmath::Rational::power(const unsigned int &n) {
+mmath::Rational& mmath::Rational::power(const int &n) {
   if (n == 0) {
     numer = 1; denom = 1;
     return *this;
+  } else if (n < 0) {
+    return reciprocal().power(-n);
   }
 
   numer = std::pow(numer, n);
