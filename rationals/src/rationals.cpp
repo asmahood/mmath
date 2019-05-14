@@ -49,10 +49,32 @@ mmath::Rational& mmath::Rational::power(const unsigned int &n) {
   return *this;
 }
 
-mmath::Rational& mmath::Rational::scalar(const int &c) {
-  numer *= c;
+mmath::Rational& mmath::Rational::add(const int &a) {
+  if (a == 0) return *this;
+
+  numer = numer + a * denom;
 
   return *this;
+}
+
+mmath::Rational& mmath::Rational::subtract(const int &a) {
+  if (a == 0) return *this;
+
+  numer = numer - a * denom;
+
+  return *this;
+}
+
+mmath::Rational& mmath::Rational::multiply(const int &a) {
+  numer *= a;
+
+  return *this;
+}
+
+mmath::Rational& mmath::Rational::divide(const int &a) {
+  if (a == 0) return *this;
+
+  denom *= a;
 }
 
 mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs) {

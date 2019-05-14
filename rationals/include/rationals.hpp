@@ -27,7 +27,11 @@ class Rational {
     Rational& reduce();
     Rational& scale(const int &c);
     Rational& power(const int &n);
-    Rational& scalar(const int &c);
+
+    Rational& add(const int &a);
+    Rational& subtract(const int &a);
+    Rational& multiply(const int &a);
+    Rational& divide(const int &);
 };
 
 } // namespace mmath
