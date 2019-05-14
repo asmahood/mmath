@@ -20,7 +20,7 @@ mmath::Rational& mmath::Rational::reduce() {
   if (denom < 3) return *this;
 
   // find gcd of numerator and denominator and divide
-  int div = gcd(numer, denom);
+  int div = util::gcd(numer, denom);
 
   numer /= div;
   denom /= div;
