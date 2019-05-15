@@ -1,6 +1,6 @@
 dist: xenial
 sudo: false
-langugage: cpp
+language: cpp
 
 addons:
   apt:
