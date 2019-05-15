@@ -9,6 +9,7 @@ addons:
     packages:
       - g++-8
       - gcc-8
+      - cmake-12
 
 script:
   - mkdir build && cd build
