@@ -1,5 +1,5 @@
 ---
-name: Submit an issue
+name: Submit an Issue
 about: Describe an issue you received with MMath.
 
 ---
