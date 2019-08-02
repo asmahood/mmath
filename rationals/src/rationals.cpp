@@ -83,6 +83,21 @@ mmath::Rational& mmath::Rational::divide(const int &a) {
   denom *= a;
 }
 
+bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs) {
+  return lhs.get_numer() == rhs.get_numer() &&
+         lhs.get_denom() == rhs.get_denom();
+}
+
+bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs) {
+  return !(lhs == rhs);
+}
+
+///////////////////////////////////////////////////////////
+// ADDITION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational + Rational
+// a/b + c/d = a*d + c*b / b*d
 mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational sum;
 
@@ -93,6 +108,29 @@ mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs
   return sum;
 }
 
+// Rational + Int
+// a/b + x/1 = a + bx / b
+mmath::Rational operator+(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational sum;
+
+  sum.set_numer(lhs.get_numer() + rhs * lhs.get_denom());
+  sum.set_denom(lhs.get_denom());
+
+  return sum;
+}
+
+// Int + Rational
+// x/1 + a/b = x*b + a / b
+mmath::Rational operator+(const int &lhs, const mmath::Rational &rhs) {
+  return rhs + lhs;
+}
+
+///////////////////////////////////////////////////////////
+// SUBTRACTION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational - Rational
+// a/b - c/d = a*d - c*b / b*d
 mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational diff;
 
@@ -103,6 +141,34 @@ mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs
   return diff;
 }
 
+// Rational - Int
+// a/b - x/1 = a - x*b / b
+mmath::Rational operator-(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational diff;
+
+  diff.set_numer(lhs.get_numer() - rhs * lhs.get_denom());
+  diff.set_denom(lhs.get_denom());
+
+  return diff;
+}
+
+// Int - Rational
+// x/1 - a/b = x*b - a / b
+mmath::Rational operator-(const int &lhs, const mmath::Rational &rhs) {
+  mmath::Rational diff;
+
+  diff.set_numer(rhs * lhs.get_denom() - lhs.get_numer());
+  diff.set_denom(lhs.get_denom());
+
+  return diff;
+}
+
+///////////////////////////////////////////////////////////
+// MULTIPLCATION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational * Rational
+// a/b * c/d = a*c / b*d
 mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational prod;
 
@@ -112,6 +178,29 @@ mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs
   return prod;
 }
 
+// Rational * Int
+// a/b * x/1 = a*x / b
+mmath::Rational operator*(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational prod;
+
+  prod.set_numer(lhs.get_numer() * rhs);
+  prod.set_denom(lhs.get_denom());
+
+  return prod;
+}
+
+// Int * Rational
+// x/1 * a/b = x*a / b
+mmath::Rational operator*(const int &lhs, const mmath::Rational &rhs) {
+  return rhs * lhs;
+}
+
+///////////////////////////////////////////////////////////
+// DIVISION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational / Rational
+// a/b / c/d = a*d / c*b
 mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational quot;
 
@@ -121,12 +210,25 @@ mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs
   return quot;
 }
 
-bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs) {
-  return lhs.get_numer() == rhs.get_numer() &&
-         lhs.get_denom() == rhs.get_denom();
+// Rational * Int
+// a/b / x/1 = a / b*x
+mmath::Rational operator/(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational quot;
+
+  quot.set_numer(lhs.get_numer());
+  quot.set_denom(rhs * lhs.get_denom());
+
+  return quot;
 }
 
-bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs) {
-  return !(lhs == rhs);
+// Int * Rational
+// x/1 / a/b = x*b / a
+mmath::Rational operator/(const int &lhs, const mmath::Rational &rhs) {
+  mmath::Rational quot;
+
+  quot.set_numer(rhs * lhs.get_denom());
+  quot.set_denom(lhs.get_numer());
+
+  return quot;
 }
 

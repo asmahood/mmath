@@ -29,20 +29,63 @@ class Rational {
 
     Rational& scale(const unsigned int &c);
     Rational& power(const int &n);
-
-    Rational& add(const int &a);
-    Rational& subtract(const int &a);
-    Rational& multiply(const int &a);
-    Rational& divide(const int &);
 };
 
 } // namespace mmath
 
-mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs);
-mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs);
-mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs);
-mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs);
 bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs);
 bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs);
+
+///////////////////////////////////////////////////////////
+// ADDITION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational + Rational
+mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs);
+
+// Rational + Int
+mmath::Rational operator+(const mmath::Rational &lhs, const int &rhs);
+
+// Int + Rational
+mmath::Rational operator+(const int &lhs, const mmath::Rational &rhs);
+
+///////////////////////////////////////////////////////////
+// SUBTRACTION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational - Rational
+mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs);
+
+// Rational - Int
+mmath::Rational operator-(const mmath::Rational &lhs, const int &rhs);
+
+// Int - Rational
+mmath::Rational operator-(const int &lhs, const mmath::Rational &rhs);
+
+///////////////////////////////////////////////////////////
+// MULTIPLCATION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational * Rational
+mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs);
+
+// Rational * Int
+mmath::Rational operator*(const mmath::Rational &lhs, const int &rhs);
+
+// Int * Rational
+mmath::Rational operator*(const int &lhs, const mmath::Rational &rhs);
+
+///////////////////////////////////////////////////////////
+// DIVISION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational / Rational
+mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs);
+
+// Rational / Int
+mmath::Rational operator/(const mmath::Rational &lhs, const int &rhs);
+
+// Int / Rational
+mmath::Rational operator/(const int &lhs, const mmath::Rational &rhs);
 
 #endif
