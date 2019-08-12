@@ -4,10 +4,6 @@
 
 #include "util.hpp"
 
-void mmath::Rational::print() {
-  std::cout << numer << "/" << denom << '\n';
-}
-
 mmath::Rational& mmath::Rational::reduce() {
   // trivial case (a / a)
   if (numer == denom) {
