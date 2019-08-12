@@ -55,34 +55,6 @@ mmath::Rational& mmath::Rational::power(const int &n) {
   return *this;
 }
 
-mmath::Rational& mmath::Rational::add(const int &a) {
-  if (a == 0) return *this;
-
-  numer = numer + a * denom;
-
-  return *this;
-}
-
-mmath::Rational& mmath::Rational::subtract(const int &a) {
-  if (a == 0) return *this;
-
-  numer = numer - a * denom;
-
-  return *this;
-}
-
-mmath::Rational& mmath::Rational::multiply(const int &a) {
-  numer *= a;
-
-  return *this;
-}
-
-mmath::Rational& mmath::Rational::divide(const int &a) {
-  if (a == 0) return *this;
-
-  denom *= a;
-}
-
 bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   return lhs.get_numer() == rhs.get_numer() &&
          lhs.get_denom() == rhs.get_denom();
