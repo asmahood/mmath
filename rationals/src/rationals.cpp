@@ -1,7 +1,6 @@
 #include "rationals.hpp"
 
 #include <cmath>
-#include <iostream>
 
 #include "util.hpp"
 
@@ -53,6 +52,27 @@ mmath::Rational& mmath::Rational::power(const int &n) {
   denom = std::pow(denom, n);
 
   return *this;
+}
+
+std::ostream& operator<<(std::ostream &os, const mmath::Rational &rat) {
+  os << rat.get_numer() << "/" << rat.get_denom();
+
+  return os;
+}
+
+std::istream& operator>>(std::istream &is, mmath::Rational &rat) {
+  int num, den;
+
+  is >> num >> den;
+
+  if (is) {
+    rat.set_numer(num);
+    rat.set_denom(den);
+  } else {
+    rat = mmath::Rational();
+  }
+
+  return is;
 }
 
 bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs) {

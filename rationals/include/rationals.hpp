@@ -1,6 +1,8 @@
 #ifndef GUARD_RATIONALS_H
 #define GUARD_RATIONALS_H
 
+#include <iostream>
+
 namespace mmath {
 
 class Rational {
@@ -32,6 +34,9 @@ class Rational {
 };
 
 } // namespace mmath
+
+std::ostream& operator<<(std::ostream &os, const mmath::Rational &rat);
+std::istream& operator>>(std::istream &is, mmath::Rational &rat);
 
 bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs);
 bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs);
