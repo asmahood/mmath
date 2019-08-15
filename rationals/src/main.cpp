@@ -5,27 +5,47 @@
 using mmath::Rational;
 
 int main() {
-  Rational x = {1, 2};
-  Rational y = {3, 4};
+  Rational a = {1, 2};
+  Rational b = {3, 4};
 
-  Rational sum = x + y;
-  Rational diff = x - y;
-  Rational prod = x * y;
-  Rational quot = x / y;
+  std::cout << "Print tests\n";
+  std::cout << a << " " << b << "\n";
 
-  Rational recip = x.reciprocal();
+  // Addition tests
+  Rational c = a + b;
+  Rational d = a + 1;
+  Rational e = 1 + b;
 
-  Rational pow = x.power(-2);
+  std::cout << "Addition tests\n";
+  std::cout << c << " " << d << " " << e << "\n";
+
+  // Subtraction tests
+  Rational f = a - b;
+  Rational g = a - 1;
+  Rational h = 1 - b;
+
+  std::cout << "Subtraction tests\n";
+  std::cout << f << " " << g << " " << h << "\n";
+
+  // Multiplication tests
+  Rational i = a * b;
+  Rational j = a * 2;
+  Rational k = 2 * b;
+
+  std::cout << "Multiplication tests\n";
+  std::cout << i << " " << j << " " << k << "\n";
+
+  // Division Tests
+  Rational l = a / b;
+  Rational m = a / 2;
+  Rational n = 2 / b;
+
+  std::cout << "Division tests\n";
+  std::cout << l << " " << m << " " << n << "\n";
 
   // Equality
-  std::cout << "Two rationals are equal: " << (x == y ? "TRUE" : "FALSE") << '\n';
-  std::cout << "Two rationals are not equal: " << (x != y ? "TRUE" : "FALSE") << '\n';
+  std::cout << "Two rationals are equal: " << (a == b ? "TRUE" : "FALSE") << '\n';
+  std::cout << "Two rationals are not equal: " << (a != b ? "TRUE" : "FALSE") << '\n';
 
-  sum.print();
-  diff.print();
-  prod.print();
-  quot.print();
-  recip.print();
-  pow.print();
   return 0;
 }

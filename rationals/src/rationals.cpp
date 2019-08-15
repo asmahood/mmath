@@ -1,13 +1,8 @@
 #include "rationals.hpp"
 
 #include <cmath>
-#include <iostream>
 
 #include "util.hpp"
-
-void mmath::Rational::print() {
-  std::cout << numer << "/" << denom << '\n';
-}
 
 mmath::Rational& mmath::Rational::reduce() {
   // trivial case (a / a)
@@ -55,34 +50,42 @@ mmath::Rational& mmath::Rational::power(const int &n) {
   return *this;
 }
 
-mmath::Rational& mmath::Rational::add(const int &a) {
-  if (a == 0) return *this;
+std::ostream& operator<<(std::ostream &os, const mmath::Rational &rat) {
+  os << rat.get_numer() << "/" << rat.get_denom();
 
-  numer = numer + a * denom;
-
-  return *this;
+  return os;
 }
 
-mmath::Rational& mmath::Rational::subtract(const int &a) {
-  if (a == 0) return *this;
+std::istream& operator>>(std::istream &is, mmath::Rational &rat) {
+  int num, den;
 
-  numer = numer - a * denom;
+  is >> num >> den;
 
-  return *this;
+  if (is) {
+    rat.set_numer(num);
+    rat.set_denom(den);
+  } else {
+    rat = mmath::Rational();
+  }
+
+  return is;
 }
 
-mmath::Rational& mmath::Rational::multiply(const int &a) {
-  numer *= a;
-
-  return *this;
+bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs) {
+  return lhs.get_numer() == rhs.get_numer() &&
+         lhs.get_denom() == rhs.get_denom();
 }
 
-mmath::Rational& mmath::Rational::divide(const int &a) {
-  if (a == 0) return *this;
-
-  denom *= a;
+bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs) {
+  return !(lhs == rhs);
 }
 
+///////////////////////////////////////////////////////////
+// ADDITION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational + Rational
+// a/b + c/d = a*d + c*b / b*d
 mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational sum;
 
@@ -93,6 +96,29 @@ mmath::Rational operator+(const mmath::Rational &lhs, const mmath::Rational &rhs
   return sum;
 }
 
+// Rational + Int
+// a/b + x/1 = a + bx / b
+mmath::Rational operator+(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational sum;
+
+  sum.set_numer(lhs.get_numer() + rhs * lhs.get_denom());
+  sum.set_denom(lhs.get_denom());
+
+  return sum;
+}
+
+// Int + Rational
+// x/1 + a/b = x*b + a / b
+mmath::Rational operator+(const int &lhs, const mmath::Rational &rhs) {
+  return rhs + lhs;
+}
+
+///////////////////////////////////////////////////////////
+// SUBTRACTION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational - Rational
+// a/b - c/d = a*d - c*b / b*d
 mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational diff;
 
@@ -103,6 +129,34 @@ mmath::Rational operator-(const mmath::Rational &lhs, const mmath::Rational &rhs
   return diff;
 }
 
+// Rational - Int
+// a/b - x/1 = a - x*b / b
+mmath::Rational operator-(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational diff;
+
+  diff.set_numer(lhs.get_numer() - rhs * lhs.get_denom());
+  diff.set_denom(lhs.get_denom());
+
+  return diff;
+}
+
+// Int - Rational
+// x/1 - a/b = x*b - a / b
+mmath::Rational operator-(const int &lhs, const mmath::Rational &rhs) {
+  mmath::Rational diff;
+
+  diff.set_numer(lhs * rhs.get_denom() - rhs.get_numer());
+  diff.set_denom(rhs.get_denom());
+
+  return diff;
+}
+
+///////////////////////////////////////////////////////////
+// MULTIPLCATION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational * Rational
+// a/b * c/d = a*c / b*d
 mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational prod;
 
@@ -112,6 +166,29 @@ mmath::Rational operator*(const mmath::Rational &lhs, const mmath::Rational &rhs
   return prod;
 }
 
+// Rational * Int
+// a/b * x/1 = a*x / b
+mmath::Rational operator*(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational prod;
+
+  prod.set_numer(lhs.get_numer() * rhs);
+  prod.set_denom(lhs.get_denom());
+
+  return prod;
+}
+
+// Int * Rational
+// x/1 * a/b = x*a / b
+mmath::Rational operator*(const int &lhs, const mmath::Rational &rhs) {
+  return rhs * lhs;
+}
+
+///////////////////////////////////////////////////////////
+// DIVISION OPERATORS
+///////////////////////////////////////////////////////////
+
+// Rational / Rational
+// a/b / c/d = a*d / c*b
 mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs) {
   mmath::Rational quot;
 
@@ -121,12 +198,25 @@ mmath::Rational operator/(const mmath::Rational &lhs, const mmath::Rational &rhs
   return quot;
 }
 
-bool operator==(const mmath::Rational &lhs, const mmath::Rational &rhs) {
-  return lhs.get_numer() == rhs.get_numer() &&
-         lhs.get_denom() == rhs.get_denom();
+// Rational * Int
+// a/b / x/1 = a / b*x
+mmath::Rational operator/(const mmath::Rational &lhs, const int &rhs) {
+  mmath::Rational quot;
+
+  quot.set_numer(lhs.get_numer());
+  quot.set_denom(rhs * lhs.get_denom());
+
+  return quot;
 }
 
-bool operator!=(const mmath::Rational &lhs, const mmath::Rational &rhs) {
-  return !(lhs == rhs);
+// Int * Rational
+// x/1 / a/b = x*b / a
+mmath::Rational operator/(const int &lhs, const mmath::Rational &rhs) {
+  mmath::Rational quot;
+
+  quot.set_numer(lhs * rhs.get_denom());
+  quot.set_denom(rhs.get_numer());
+
+  return quot;
 }
 
