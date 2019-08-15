@@ -145,8 +145,8 @@ mmath::Rational operator-(const mmath::Rational &lhs, const int &rhs) {
 mmath::Rational operator-(const int &lhs, const mmath::Rational &rhs) {
   mmath::Rational diff;
 
-  diff.set_numer(rhs * lhs.get_denom() - lhs.get_numer());
-  diff.set_denom(lhs.get_denom());
+  diff.set_numer(lhs * rhs.get_denom() - rhs.get_numer());
+  diff.set_denom(rhs.get_denom());
 
   return diff;
 }
@@ -214,8 +214,8 @@ mmath::Rational operator/(const mmath::Rational &lhs, const int &rhs) {
 mmath::Rational operator/(const int &lhs, const mmath::Rational &rhs) {
   mmath::Rational quot;
 
-  quot.set_numer(rhs * lhs.get_denom());
-  quot.set_denom(lhs.get_numer());
+  quot.set_numer(lhs * rhs.get_denom());
+  quot.set_denom(rhs.get_numer());
 
   return quot;
 }
