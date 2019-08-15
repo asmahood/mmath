@@ -5,6 +5,6 @@ int util::gcd(const int &x, const int &y) {
 
   if (y > x) return gcd(y, x);
 
-  gcd(y, x % y);
+  return gcd(y, x % y);
 }
 
