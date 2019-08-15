@@ -38,7 +38,7 @@ int main() {
   // Division Tests
   Rational l = a / b;
   Rational m = a / 2;
-  Ratioanl n = 2 / b;
+  Rational n = 2 / b;
 
   std::cout << "Division tests\n";
   std::cout << l << " " << m << " " << n << "\n";
