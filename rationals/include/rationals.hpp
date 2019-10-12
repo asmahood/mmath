@@ -7,7 +7,6 @@ namespace mmath {
 
 class Rational {
   private:
-    
     int numer;
     int denom;
 

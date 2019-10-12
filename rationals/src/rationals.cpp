@@ -11,7 +11,7 @@ mmath::Rational mmath::Rational::reduce(const mmath::Rational& rat) {
   if (numer == denom) return mmath::Rational(1);
 
   // irreducible fraction
-  if (numer % denom != 0 && denom < 3) return rat;
+  if (numer % denom != 0 && denom <= 3) return rat;
 
   // find gcd of numerator and denominator and divide
   int div = util::gcd(numer, denom);
@@ -46,6 +46,10 @@ mmath::Rational& mmath::Rational::power(const int &n) {
   denom = std::pow(denom, n);
 
   return *this;
+}
+
+bool mmath::Rational::irreducible() {
+  return numer % denom != 0 && denom <= 3;
 }
 
 std::ostream& operator<<(std::ostream &os, const mmath::Rational &rat) {
