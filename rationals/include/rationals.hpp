@@ -7,6 +7,7 @@ namespace mmath {
 
 class Rational {
   private:
+    
     int numer;
     int denom;
 
@@ -16,18 +17,16 @@ class Rational {
     Rational() : Rational(0, 1) { }
     Rational(const int &x) : Rational(x, 1) { }
 
-    // Getters
     int get_numer() const { return numer; }
     int get_denom() const { return denom; }
-
-    // Setters
     void set_numer(const int &x) { numer = x; }
     void set_denom(const int &x) { denom = x; }
 
-    // Methods
-    Rational& reduce();
-    Rational reciprocal();
+    // Static functions
+    static Rational reduce(const Rational& rat);
+    static Rational reciprocal(const Rational& rat);
 
+    // Class methods
     Rational& scale(const unsigned int &c);
     Rational& power(const int &n);
 };

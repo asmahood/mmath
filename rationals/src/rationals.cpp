@@ -4,27 +4,25 @@
 
 #include "util.hpp"
 
-mmath::Rational& mmath::Rational::reduce() {
+mmath::Rational mmath::Rational::reduce(const mmath::Rational& rat) {
+  int numer = rat.get_numer(), denom = rat.get_denom();
+
   // trivial case (a / a)
-  if (numer == denom) {
-    numer = 1; denom = 1;
-    return *this;
-  }
+  if (numer == denom) return mmath::Rational(1);
 
   // irreducible fraction
-  if (denom < 3) return *this;
+  if (numer % denom != 0 && denom < 3) return rat;
 
   // find gcd of numerator and denominator and divide
   int div = util::gcd(numer, denom);
-
   numer /= div;
   denom /= div;
 
-  return *this;
+  return mmath::Rational(numer, denom);
 }
 
-mmath::Rational mmath::Rational::reciprocal() {
-  return mmath::Rational(denom, numer);
+mmath::Rational mmath::Rational::reciprocal(const mmath::Rational& rat) {
+  return mmath::Rational(rat.get_denom(), rat.get_numer());
 }
 
 mmath::Rational& mmath::Rational::scale(const unsigned int &c) {
@@ -41,7 +39,7 @@ mmath::Rational& mmath::Rational::power(const int &n) {
     numer = 1; denom = 1;
     return *this;
   } else if (n < 0) {
-    return reciprocal().power(-n);
+    return reciprocal(*this).power(-n);
   }
 
   numer = std::pow(numer, n);
