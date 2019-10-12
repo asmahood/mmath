@@ -114,5 +114,3 @@ mmath::Rational operator/(const mmath::Rational &lhs, const int &rhs);
 
 // Int / Rational
 mmath::Rational operator/(const int &lhs, const mmath::Rational &rhs);
-
-#endif
