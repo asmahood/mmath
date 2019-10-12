@@ -5,20 +5,20 @@
 #include "util.hpp"
 
 mmath::Rational mmath::Rational::reduce(const mmath::Rational& rat) {
-  int numer = rat.get_numer(), denom = rat.get_denom();
+  int numer_ = rat.get_numer(), denom_ = rat.get_denom();
 
   // trivial case (a / a)
-  if (numer == denom) return mmath::Rational(1);
+  if (numer_ == denom_) return mmath::Rational(1);
 
   // irreducible fraction
-  if (numer % denom != 0 && denom <= 3) return rat;
+  if (numer_ % denom_ != 0 && denom_ <= 3) return rat;
 
   // find gcd of numerator and denominator and divide
-  int div = util::gcd(numer, denom);
-  numer /= div;
-  denom /= div;
+  int div = util::gcd(numer_, denom_);
+  numer_ /= div;
+  denom_ /= div;
 
-  return mmath::Rational(numer, denom);
+  return mmath::Rational(numer_, denom_);
 }
 
 mmath::Rational mmath::Rational::reciprocal(const mmath::Rational& rat) {
@@ -28,28 +28,28 @@ mmath::Rational mmath::Rational::reciprocal(const mmath::Rational& rat) {
 mmath::Rational& mmath::Rational::scale(const unsigned int &c) {
   if (c == 0) return *this;
 
-  numer *= c;
-  denom *= c;
+  numer_ *= c;
+  denom_ *= c;
 
   return *this;
 }
 
 mmath::Rational& mmath::Rational::power(const int &n) {
   if (n == 0) {
-    numer = 1; denom = 1;
+    numer_ = 1; denom_ = 1;
     return *this;
   } else if (n < 0) {
     return reciprocal(*this).power(-n);
   }
 
-  numer = std::pow(numer, n);
-  denom = std::pow(denom, n);
+  numer_ = std::pow(numer_, n);
+  denom_ = std::pow(denom_, n);
 
   return *this;
 }
 
 bool mmath::Rational::irreducible() {
-  return numer % denom != 0 && denom <= 3;
+  return numer_ % denom_ != 0 && denom_ <= 3;
 }
 
 std::ostream& operator<<(std::ostream &os, const mmath::Rational &rat) {

@@ -11,8 +11,11 @@ namespace mmath {
  */
 class Rational {
   private:
-    int numer;
-    int denom;
+    /// The numerator of the rational number
+    int numer_;
+
+    /// The denominator of the rational number
+    int denom_;
 
   public:
     /**
@@ -23,7 +26,7 @@ class Rational {
      * @param x the numerator of the fraction
      * @param y the denominator of the fraction
      */
-    Rational(const int &x, const int &y) : numer(x), denom(y) { }
+    Rational(const int &x, const int &y) : numer_(x), denom_(y) { }
 
     /**
      * Default Constructor
@@ -39,10 +42,10 @@ class Rational {
      */
     Rational(const int &x) : Rational(x, 1) { }
 
-    int get_numer() const { return numer; }
-    int get_denom() const { return denom; }
-    void set_numer(const int &x) { numer = x; }
-    void set_denom(const int &x) { denom = x; }
+    int get_numer() const { return numer_; }
+    int get_denom() const { return denom_; }
+    void set_numer(const int &x) { numer_ = x; }
+    void set_denom(const int &x) { denom_ = x; }
 
     // Static functions
     static Rational reduce(const Rational& rat);
