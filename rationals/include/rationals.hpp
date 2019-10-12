@@ -28,6 +28,8 @@ class Rational {
     // Class methods
     Rational& scale(const unsigned int &c);
     Rational& power(const int &n);
+
+    bool irreducible();
 };
 
 } // namespace mmath
