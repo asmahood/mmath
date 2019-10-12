@@ -5,15 +5,39 @@
 
 namespace mmath {
 
+/**
+ * Implementation of a rational class for mathematics
+ * 
+ * This class implements a base class to perform mathematics with exact percision using rational numbers.
+ */
 class Rational {
   private:
     int numer;
     int denom;
 
   public:
-    // Constructors
+    /**
+     * General Constructor
+     * 
+     * Creates an arbitary rational number x/y.
+     * 
+     * @param x the numerator of the fraction
+     * @param y the denominator of the fraction
+     */
     Rational(const int &x, const int &y) : numer(x), denom(y) { }
+
+    /**
+     * Default Constructor
+     * 
+     * Creates the rational number 0.
+     */
     Rational() : Rational(0, 1) { }
+
+    /**
+     * Whole Number Constructor
+     * 
+     * Creates any whole number x/1
+     */
     Rational(const int &x) : Rational(x, 1) { }
 
     int get_numer() const { return numer; }
