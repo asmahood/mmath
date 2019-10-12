@@ -1,5 +1,4 @@
-#ifndef GUARD_RATIONALS_H
-#define GUARD_RATIONALS_H
+#pragma once
 
 #include <iostream>
 
