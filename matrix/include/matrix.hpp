@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector> 
+
 namespace mmath {
 
 /**
@@ -26,8 +28,7 @@ class Matrix {
      * 
      * Creates an empty matrix with 0 rows and 0 columns.
      */
-    Matrix(): rows_(0), cols_(0), data_(0) { } = default
-
+    Matrix(): rows_(0), cols_(0), data_(0) { }
     /**
      * General Constructor
      * 
@@ -53,7 +54,7 @@ class Matrix {
      * 
      * @returns the same matrix, with p rows and q columns
      */
-    Matrix& resize(const size_t &p, const size_t &q);
+    Matrix& resize(const int &p, const int &q);
 
     /**
      * Resizes a matrix M from m rows to p rows.
@@ -65,7 +66,7 @@ class Matrix {
      * 
      * @returns the same matrix with p rows
      */
-    Matrix& resize_rows(const size_t &p);
+    Matrix& resize_rows(const int &p);
 
     /**
      * Resizes a matrix M from n columns to q columns.
@@ -77,7 +78,7 @@ class Matrix {
      * 
      * @returns the same matrix with p rows
      */
-    Matrix& resize_cols(const size_t &q);
+    Matrix& resize_cols(const int &q);
 };
 
 } // namespace mmath
