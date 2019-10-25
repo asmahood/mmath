@@ -29,6 +29,17 @@ class Matrix {
      * Creates an empty matrix with 0 rows and 0 columns.
      */
     Matrix(): rows_(0), cols_(0), data_(0) { }
+
+    /**
+     * Default Move Constructor
+     */
+    Matrix(const Matrix&) = default;
+
+    /**
+     * Default Destructor
+     */
+    ~Matrix() = default;
+
     /**
      * General Constructor
      * 
@@ -79,6 +90,11 @@ class Matrix {
      * @returns the same matrix with p rows
      */
     Matrix& resize_cols(const int &q);
+
+    /**
+     * Default Copy-Assignment Operator
+     */
+    Matrix& operator=(const Matrix&);
 };
 
 } // namespace mmath
