@@ -1,6 +1,7 @@
 #pragma once
 
-#include <vector> 
+#include <initializer_list>
+#include <vector>
 
 namespace mmath {
 
@@ -28,7 +29,7 @@ class Matrix {
      * 
      * Creates an empty matrix with 0 rows and 0 columns.
      */
-    Matrix(): rows_(0), cols_(0), data_(0) { }
+    Matrix(): rows_(0), cols_(0) { }
 
     /**
      * Default Move Constructor
@@ -45,15 +46,20 @@ class Matrix {
      * 
      * Creates an mxn matrix with m rows and n columns.
      */
-    Matrix(const int &m, const int &n): rows_(m), cols_(n), data_(0) { }
+    Matrix(const int &m, const int &n): rows_(m), cols_(n) { }
+
+    Matrix(const int &m, const int &n, 
+      std::initializer_list<std::initializer_list<T>> lst): rows_(m), cols_(n) { }
 
     /**
      * Square Constructor
      * 
      * Creates an nxn matrix with the same number of rows and columns.
      */
-    Matrix(const int &n): rows_(n), cols_(n), data_(0) { }
+    Matrix(const int &n): rows_(n), cols_(n) { }
 
+    Matrix(const int &n,
+      std::initializer_list<std::initializer_list<T>> lst): rows_(n), cols_(n) { }
     /**
      * Resizes a matrix M from an mxn matrix to a pxq matrix.
      * 
